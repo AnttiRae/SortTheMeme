@@ -13,16 +13,23 @@ webm_location = config['DEFAULT']['WebmLocation']
 mp3_location = config['DEFAULT']['MP3Location']
 m4a_location = config['DEFAULT']['M4ALocation']
 
+# video files
 mp4 = compile('^.*\.mp4')
 webm = compile('^.*\.webm')
+# sound files
 mp3 = compile('^.*\.mp3')
 m4a = compile('^.*\.m4a')
+# image files
+image = compile('^.*\.(jpg|jpeg|png)')
+gif = compile('^.*\.gif')
 
 memes = {
     'mp4': [],
     'webm': [],
     'mp3': [],
-    'm4a': []
+    'm4a': [],
+    'image': [],
+    'gif': []
 }
 
 list = listdir(downloads_location)
@@ -37,6 +44,8 @@ for meme in list:
         memes['mp3'].append(meme)
     if(m4a.match(meme)):
         memes['m4a'].append(meme)
+    if(image.match(meme)):
+        memes.['image'].append(meme)
 
 print('Total number of found memes', len(memes))
 print('''Memes found:
